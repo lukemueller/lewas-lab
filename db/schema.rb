@@ -14,17 +14,17 @@
 ActiveRecord::Schema.define(version: 20141229043113) do
 
   create_table "sonde_readings", force: :cascade do |t|
-    t.string   "time",                          limit: 255
-    t.decimal  "temperature",                               precision: 10
-    t.decimal  "ph",                                        precision: 10
-    t.decimal  "specific_conductivity",                     precision: 10
-    t.decimal  "disolved_oxygen",                           precision: 10
-    t.decimal  "turbidity",                                 precision: 10
-    t.decimal  "oxidation_reduction_potential",             precision: 10
-    t.decimal  "total_dissolved_solids",                    precision: 10
-    t.decimal  "disolved_oxygen_saturation",                precision: 10
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
+    t.datetime "date_time"
+    t.decimal  "temperature",                   precision: 16, scale: 4
+    t.decimal  "ph",                            precision: 16, scale: 4
+    t.decimal  "specific_conductivity",         precision: 16, scale: 4
+    t.decimal  "dissolved_oxygen",              precision: 16, scale: 4
+    t.decimal  "turbidity",                     precision: 16, scale: 4
+    t.decimal  "oxidation_reduction_potential", precision: 16, scale: 4
+    t.decimal  "total_dissolved_solids",        precision: 16, scale: 4
+    t.decimal  "dissolved_oxygen_saturation",   precision: 16, scale: 4
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
   end
 
 end
