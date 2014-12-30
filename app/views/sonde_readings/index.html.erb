@@ -1,43 +1,47 @@
-<p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+  <p id="notice" class="alert alert-success" role="alert"><%= notice %></p>
+<% end %>
 
 <h1>Listing Sonde Readings</h1>
 
 <%= @uploaded_file %>
 
-<%= form_tag({:action => :import}, multipart: true) do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag( "Import CSV" ) %>
-<% end %>
+<div clas="form-group">
+  <%= form_tag({action: :import}, {multipart: true, class: "form-inline"}) do %>
+    <%= file_field_tag(:file, style: "display: inline") %>
+    <%= submit_tag("Import CSV", class: "btn btn-primary") %>
+  <% end %>
+</div>
 
-<table>
+<table class="table table-border table-hover">
   <thead>
-    <tr>
-      <th colspan="9"></th>
-    </tr>
+  <tr>
+    <th colspan="9"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <th>Date / Time</th>
-    <th>Temp [°C]</th>
-    <th>pH [Units]</th>
-    <th>SpCond [µS/cm]</th>
-    <th>DO [mg/l]</th>
-    <th>TurbSC [NTU]</th>
-    <th>ORP [mV]</th>
-    <th>TDS [g/l]</th>
-    <th>DO% [Sat]</th>
-    <% @sonde_readings.each do |sonde_reading| %>
-      <tr>
-        <td><%= sonde_reading.date_time %></td>
-        <td><%= sonde_reading.temperature %></td>
-        <td><%= sonde_reading.ph %></td>
-        <td><%= sonde_reading.specific_conductivity %></td>
-        <td><%= sonde_reading.dissolved_oxygen %></td>
-        <td><%= sonde_reading.turbidity %></td>
-        <td><%= sonde_reading.oxidation_reduction_potential %></td>
-        <td><%= sonde_reading.total_dissolved_solids %></td>
-        <td><%= sonde_reading.dissolved_oxygen_saturation %></td>
-      </tr>
-    <% end %>
+  <th>Date / Time</th>
+  <th>Temp [°C]</th>
+  <th>pH [Units]</th>
+  <th>SpCond [µS/cm]</th>
+  <th>DO [mg/l]</th>
+  <th>TurbSC [NTU]</th>
+  <th>ORP [mV]</th>
+  <th>TDS [g/l]</th>
+  <th>DO% [Sat]</th>
+  <% @sonde_readings.each do |sonde_reading| %>
+    <tr>
+      <td><%= sonde_reading.date_time %></td>
+      <td><%= sonde_reading.temperature %></td>
+      <td><%= sonde_reading.ph %></td>
+      <td><%= sonde_reading.specific_conductivity %></td>
+      <td><%= sonde_reading.dissolved_oxygen %></td>
+      <td><%= sonde_reading.turbidity %></td>
+      <td><%= sonde_reading.oxidation_reduction_potential %></td>
+      <td><%= sonde_reading.total_dissolved_solids %></td>
+      <td><%= sonde_reading.dissolved_oxygen_saturation %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
