@@ -25,5 +25,7 @@ module LewasLab
 
     # Autoload lib/ folder including all subdirectories
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+
+    config.log_level = Logger::DEBUG
   end
 end
